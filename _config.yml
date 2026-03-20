@@ -1,0 +1,22 @@
+title: "知识笔记"
+description: "个人阅读笔记与知识库"
+theme: minima
+baseurl: ""
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+permalink: /:categories/:year/:month/:day/:title/
+collections:
+  notes:
+    output: true
+    permalink: /notes/:title/
+defaults:
+  - scope:
+      path: "_notes"
+      type: "notes"
+    values:
+      layout: "note"
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag

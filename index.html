@@ -1,0 +1,27 @@
+---
+layout: default
+title: "知识笔记"
+---
+<h2>最新笔记</h2>
+<ul class="note-list">
+  {% assign sorted_notes = site.notes | sort: "date" | reverse %}
+  {% for note in sorted_notes %}
+  <li class="note-item">
+    <h2><a href="{{ note.url | relative_url }}">{{ note.title }}</a></h2>
+    <div class="meta">
+      {{ note.date | date: "%Y-%m-%d" }}
+      {% if note.category %} · {{ note.category }}{% endif %}
+    </div>
+    {% if note.tags %}
+    <div>
+      {% for tag in note.tags %}<span class="tag">#{{ tag }}</span>{% endfor %}
+    </div>
+    {% endif %}
+    {% if note.excerpt %}<p class="excerpt">{{ note.excerpt | strip_html | truncate: 150 }}</p>{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+
+{% if site.notes.size == 0 %}
+<p style="color: #888; margin-top: 20px;">还没有发布笔记，用 WorkBuddy 笔记助手发布第一篇吧！</p>
+{% endif %}

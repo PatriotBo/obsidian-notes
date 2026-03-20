@@ -1,0 +1,28 @@
+---
+layout: default
+title: "标签"
+permalink: /tags/
+---
+<div class="tags-page">
+<h1>所有标签</h1>
+{% assign all_tags = "" | split: "" %}
+{% for note in site.notes %}
+  {% for tag in note.tags %}
+    {% unless all_tags contains tag %}
+      {% assign all_tags = all_tags | push: tag %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
+
+{% assign sorted_tags = all_tags | sort %}
+{% for tag in sorted_tags %}
+<h2 id="{{ tag }}">#{{ tag }}</h2>
+<ul>
+  {% for note in site.notes %}
+    {% if note.tags contains tag %}
+    <li><a href="{{ note.url | relative_url }}">{{ note.title }}</a> <small>({{ note.date | date: "%Y-%m-%d" }})</small></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endfor %}
+</div>
