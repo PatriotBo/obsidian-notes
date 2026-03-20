@@ -1,11 +1,14 @@
 title: "知识笔记"
 description: "个人阅读笔记与知识库"
-theme: minima
-baseurl: ""
+baseurl: "/obsidian-notes"
+url: "https://PatriotBo.github.io"
 markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
 permalink: /:categories/:year/:month/:day/:title/
 collections:
   notes:
